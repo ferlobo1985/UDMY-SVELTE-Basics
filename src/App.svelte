@@ -4,4 +4,5 @@
 </script>
 
 <Header/>
+<h2>H2 from the parent</h2>
 <Users/>
