@@ -1,29 +1,23 @@
 <script>
-    let newName = '';
-    let names = ['Mike','Lisa','Steve'];
-    function addName(){
-        names = [...names,newName];
-        newName = '';
-    }
+let promisePosts = getPosts();
+async function getPosts(){
+    const response = await fetch('https://jsonplaceholder.typicode.com/posts');
+    const posts = await response.json();
 
-    let cars = [
-        {id:1,brand:'Ford'},
-        {id:2,brand:'Nissan'},
-        {id:3,brand:'Chevy'}
-    ]
+    // throw new Error('Something wrong')
+    return posts;
+}
 </script>
 
-<ul>
-    {#each names as name, index (index+name) }
-        <li>{index+1} - {name}</li>
+{#await promisePosts}
+    <p>Loading...</p>
+{:then posts } 
+    
+    {#each posts as post (post.id)}
+        <p>{post.title}</p>
+        <hr/>
     {/each}
-</ul>
-<input type="text" bind:value={newName}/>
-<button on:click={addName}>Add name</button>
 
-<hr/>
-<ul>
-    {#each cars as car (car.id)}
-        <li>{car.brand}</li>
-    {/each}
-</ul>
+{:catch error}
+    <p>{error}</p>
+{/await}
