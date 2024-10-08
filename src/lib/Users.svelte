@@ -1,18 +1,15 @@
 <script>
-    function saySomething(){
-        alert('Hello there !!!')
-    }
-    function hanleInput(e){
-        console.log(e.target.value,'input')
-    }
-    function handleForm(e){
-        console.log('Done !!!')
-    }
+    let age = 20;
+    let auth = true;
 </script>
 
-<form on:submit|preventDefault|stopPropagation={handleForm}>
-    <input type="text" on:input={hanleInput}/>
-    <button type="submit">Submit</button>
-</form>
+{#if !auth }
+    <h2>you are not AUTH</h2>
+{:else if age <= 10}
+    <h2>You are too young</h2>
+{:else}
+    <h2>Welcome !!!</h2>
+{/if}
 
-<button on:click={saySomething}>Say something</button>
+<input type="number" bind:value={age}/>
+<input type="checkbox" bind:checked={auth}/>
