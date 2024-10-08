@@ -1,20 +1,7 @@
-<script>
-    import { createEventDispatcher } from 'svelte'
-    const dispatch = createEventDispatcher();
-
-    let name;
-    let age;
-
-    function sayHello(){
-        dispatch('handleHello',{
-            name,
-            age
-        })
-    }
-</script>
 
 <div class="container">
-    <input type="text" bind:value={name}>
-    <input type="number" bind:value={age}>
-    <button on:click={sayHello}>Hello</button>
+    <slot name="username">...Loading username</slot>
+    <hr/>
+    <p>This is not inside the slot</p>
+    <slot name="footer">...Loading footer</slot>
 </div>
