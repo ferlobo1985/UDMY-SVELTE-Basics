@@ -1,21 +1,21 @@
 <script>
-    import { beforeUpdate, afterUpdate } from 'svelte';
-    export let name = 'Steve';
+   function myAction(node, args){
+        node.style.color = args;
+        node.innerHTML = 'Changed it';
 
-    beforeUpdate(()=>{
-        console.log('BEFORE Update')
-    })
+        function handleClick(){
+            console.log('Element clicked')
+        }
+        node.addEventListener('click',handleClick)
 
-    afterUpdate(()=>{
-        console.log('AFTER Update')
-    })
-
+        return {
+            destroy(){
+                node.removeEventListener('click')
+            }
+        }
+   }
 </script>
 
-
 <div class="container">
-    <h1>Users component</h1>
-    <p>{name}</p>
-    <hr/>
-    <button on:click={()=> name="Mark"}>Update name</button>
+    <div use:myAction={'blue'}>Some element</div>
 </div>
