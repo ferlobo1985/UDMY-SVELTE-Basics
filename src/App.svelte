@@ -1,8 +1,11 @@
 <script>
-    import Header from "./Header.svelte";
     import Users from "./lib/Users.svelte";
+    let name = 'Steve'
+
+    setTimeout(()=>{
+        name = 'Mark'
+    },2000)
+
 </script>
 
-<Header/>
-<h2>H2 from the parent</h2>
-<Users/>
+<Users username={name}/>
