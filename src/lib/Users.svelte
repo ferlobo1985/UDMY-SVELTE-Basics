@@ -1,5 +1,3 @@
 <script>
-    export let username;
+    export const name = 'Mark';
 </script>
-
-<h2>{username}</h2>

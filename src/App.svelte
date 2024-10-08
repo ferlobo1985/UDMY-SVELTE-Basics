@@ -1,11 +1,7 @@
 <script>
     import Users from "./lib/Users.svelte";
-    let name = 'Steve'
-
-    setTimeout(()=>{
-        name = 'Mark'
-    },2000)
-
+    let name;
 </script>
 
-<Users username={name}/>
+<h1>the real name is: {name}</h1>
+<Users bind:name/>
