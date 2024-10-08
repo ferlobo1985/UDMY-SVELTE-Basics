@@ -1,15 +1,29 @@
 <script>
-    let age = 20;
-    let auth = true;
+    let newName = '';
+    let names = ['Mike','Lisa','Steve'];
+    function addName(){
+        names = [...names,newName];
+        newName = '';
+    }
+
+    let cars = [
+        {id:1,brand:'Ford'},
+        {id:2,brand:'Nissan'},
+        {id:3,brand:'Chevy'}
+    ]
 </script>
 
-{#if !auth }
-    <h2>you are not AUTH</h2>
-{:else if age <= 10}
-    <h2>You are too young</h2>
-{:else}
-    <h2>Welcome !!!</h2>
-{/if}
+<ul>
+    {#each names as name, index (index+name) }
+        <li>{index+1} - {name}</li>
+    {/each}
+</ul>
+<input type="text" bind:value={newName}/>
+<button on:click={addName}>Add name</button>
 
-<input type="number" bind:value={age}/>
-<input type="checkbox" bind:checked={auth}/>
+<hr/>
+<ul>
+    {#each cars as car (car.id)}
+        <li>{car.brand}</li>
+    {/each}
+</ul>
