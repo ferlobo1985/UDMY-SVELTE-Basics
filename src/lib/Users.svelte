@@ -1,8 +1,21 @@
+<script>
+    import { onMount, onDestroy } from 'svelte'
+
+    onMount(()=>{
+        console.log('Users COMP, MOUNTED');
+
+        // return()=>{
+        //     console.log('COMP unmounted')
+        // }
+    })
+
+    onDestroy(()=>{
+        console.log('COMP unmounted')
+    })
+
+</script>
+
 
 <div class="container">
-  
-    {#if $$slots.content}
-        <hr/>
-        <slot name="content"/>
-    {/if}
+  <h1>Users component</h1>
 </div>

@@ -1,15 +1,15 @@
 <script>
     import Users from "./lib/Users.svelte";
+    let users = false;
 </script>
 
+{#if users}
+    <Users/>
+{/if}
 
-<Users>
-    <svelte:fragment slot="content">
-        <p>Some content</p>
-    </svelte:fragment>
+<button on:click={()=> users = !users}>
+    Show and hide
+</button>
 
-    <!-- <svelte:fragment slot="footer">
-        <p>Some footer content</p>
-    </svelte:fragment> -->
-</Users>
+
 
