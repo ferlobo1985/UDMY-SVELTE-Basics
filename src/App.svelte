@@ -4,6 +4,12 @@
 
 
 <Users>
-    <h1 slot="username">Steve</h1>
+    <svelte:fragment slot="content">
+        <p>Some content</p>
+    </svelte:fragment>
+
+    <!-- <svelte:fragment slot="footer">
+        <p>Some footer content</p>
+    </svelte:fragment> -->
 </Users>
 
