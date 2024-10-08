@@ -1,15 +1,18 @@
 <script>
     import Users from "./lib/Users.svelte";
-    let users = false;
+    let name;
+
+    setTimeout(()=>{
+        name = 'Miles'
+    },3000)
+
 </script>
 
-{#if users}
-    <Users/>
-{/if}
 
-<button on:click={()=> users = !users}>
-    Show and hide
-</button>
+<Users {name}/>
+
+
+
 
 
 

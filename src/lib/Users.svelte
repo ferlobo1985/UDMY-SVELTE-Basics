@@ -1,21 +1,21 @@
 <script>
-    import { onMount, onDestroy } from 'svelte'
+    import { beforeUpdate, afterUpdate } from 'svelte';
+    export let name = 'Steve';
 
-    onMount(()=>{
-        console.log('Users COMP, MOUNTED');
-
-        // return()=>{
-        //     console.log('COMP unmounted')
-        // }
+    beforeUpdate(()=>{
+        console.log('BEFORE Update')
     })
 
-    onDestroy(()=>{
-        console.log('COMP unmounted')
+    afterUpdate(()=>{
+        console.log('AFTER Update')
     })
 
 </script>
 
 
 <div class="container">
-  <h1>Users component</h1>
+    <h1>Users component</h1>
+    <p>{name}</p>
+    <hr/>
+    <button on:click={()=> name="Mark"}>Update name</button>
 </div>
